@@ -11,11 +11,14 @@ import torchvision.models.resnet as resnet
 #path='/home/weixin/.torch/models/resnet18-5c106cde.pth'
 
 class Mask_Rcnn():
-    def __init__(self):
-        pass
-    def create_conv_body(self,net='resnet18',pretrained=False,path_pretrain=None):
+    def __init__(self,path_pretrained=None):
+        
+        self.path_pretrained=path_pretrained
+        
+        
+    def create_conv_body(self,net='resnet18',pretrained=False,path_pretrained=None):
         if pretrained:
-            self.pretrained_model=torch.load(path_pretrain)
+            self.pretrained_model=torch.load(path_pretrained)
             
         if net=='resnet18':
             resnet18=resnet.resnet18()
@@ -24,5 +27,8 @@ class Mask_Rcnn():
                                            resnet18.layer2,
                                            resnet18.layer3,
                                            resnet18.layer4])
+            
+    def create_archtecture(self):
+        self.create_conv_body(pretrained=True,path_pretrained=self.path_pretrained)
             
             
