@@ -10,8 +10,10 @@ import torchvision.models.resnet as resnet
 
 #path='/home/weixin/.torch/models/resnet18-5c106cde.pth'
 
-class Conv_Body():
-    def __init__(self,net='resnet18',pretrained=False,path_pretrain=None):
+class Mask_Rcnn():
+    def __init__(self):
+        pass
+    def create_conv_body(self,net='resnet18',pretrained=False,path_pretrain=None):
         if pretrained:
             self.pretrained_model=torch.load(path_pretrain)
             
